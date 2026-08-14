@@ -1,0 +1,1389 @@
+/* =========================================================
+   DAILY VERSE
+   COMPLETE CSS
+========================================================= */
+
+
+/* =========================================================
+   RESET
+========================================================= */
+
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: #000;
+    color: #fff;
+
+    font-family:
+        "Noto Sans Tamil",
+        sans-serif;
+
+    overflow: hidden;
+
+    -webkit-tap-highlight-color: transparent;
+}
+
+
+/* =========================================================
+   BACKGROUND
+========================================================= */
+
+.background {
+    position: fixed;
+
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    background: #000;
+
+    z-index: -10;
+}
+
+
+/* =========================================================
+   PAGE SYSTEM
+========================================================= */
+
+.page {
+    position: fixed;
+
+    inset: 0;
+
+    width: 100%;
+    height: 100vh;
+    height: 100dvh;
+
+    overflow: hidden;
+
+    background: #000;
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    pointer-events: none;
+
+    z-index: 2;
+}
+
+
+.page.active {
+    opacity: 1;
+
+    visibility: visible;
+
+    pointer-events: auto;
+
+    z-index: 10;
+}
+
+
+/* =========================================================
+   BACKGROUND IMAGES
+========================================================= */
+
+.background-image {
+    position: absolute;
+
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    background-repeat: no-repeat;
+
+    background-position: center top;
+
+    background-size: cover;
+
+    pointer-events: none;
+
+    z-index: 0;
+}
+
+
+/* FIRST SCREEN BACKGROUND */
+
+.image-one {
+
+    background-image:
+        url("https://i.pinimg.com/1200x/2d/50/e1/2d50e128c2d092f3b2452a30c3994035.jpg");
+
+    background-repeat: no-repeat;
+
+    background-position: center top;
+
+    background-size: cover;
+
+    -webkit-mask-image:
+        linear-gradient(
+            to bottom,
+
+            rgba(0, 0, 0, 0.20) 0%,
+            rgba(0, 0, 0, 0.40) 25%,
+            rgba(0, 0, 0, 0.80) 50%,
+            rgba(0, 0, 0, 1.00) 100%
+        );
+
+    mask-image:
+        linear-gradient(
+            to bottom,
+
+            rgba(0, 0, 0, 0.20) 0%,
+            rgba(0, 0, 0, 0.40) 25%,
+            rgba(0, 0, 0, 0.80) 50%,
+            rgba(0, 0, 0, 1.00) 100%
+        );
+}
+
+
+/* =========================================================
+   SECOND SCREEN BACKGROUND
+   Opacity: 25% → 50% → 75% → 100%
+   Top → Bottom
+========================================================= */
+
+.image-two {
+
+    background-image:
+        url("https://i.pinimg.com/1200x/2d/50/e1/2d50e128c2d092f3b2452a30c3994035.jpg");
+
+    background-repeat: no-repeat;
+
+    background-position: center top;
+
+    background-size: cover;
+
+    -webkit-mask-image:
+        linear-gradient(
+            to bottom,
+
+            rgba(0, 0, 0, 0.10) 0%,
+            rgba(0, 0, 0, 0.20) 25%,
+            rgba(0, 0, 0, 0.30) 50%,
+            rgba(0, 0, 0, 0.40) 100%
+        );
+
+    mask-image:
+        linear-gradient(
+            to bottom,
+
+            rgba(0, 0, 0, 0.10) 0%,
+            rgba(0, 0, 0, 0.20) 25%,
+            rgba(0, 0, 0, 0.30) 50%,
+            rgba(0, 0, 0, 0.40) 100%
+        );
+}
+
+
+/* =========================================================
+   PAGE CONTENT
+========================================================= */
+
+.page-content {
+    position: relative;
+
+    z-index: 5;
+
+    width: 100%;
+    height: 100%;
+
+    text-align: center;
+}
+
+
+/* =========================================================
+   TOP LOGO
+========================================================= */
+
+.top-logo {
+
+    position: fixed;
+
+    top:
+        max(
+            15px,
+            env(safe-area-inset-top)
+        );
+
+    right: 18px;
+
+    width: 70px;
+    height: 70px;
+
+    object-fit: contain;
+
+    border-radius: 50%;
+
+    z-index: 300;
+
+    filter:
+        drop-shadow(
+            0 0 8px
+            rgba(255,215,70,0.75)
+        )
+
+        drop-shadow(
+            0 0 15px
+            rgba(255,215,70,0.35)
+        );
+}
+
+
+/* =========================================================
+   SMALL BIBLE IMAGE
+   ================================================
+
+   IMPORTANT:
+   This has been moved to the TOP CENTER.
+
+   Old:
+   top: 39%
+
+   New:
+   top: 13%
+========================================================= */
+
+.bible-image {
+
+    position: absolute;
+
+    left: 50%;
+
+    top: 13%;
+
+    transform:
+        translateX(-50%);
+
+    width: 345px;
+
+    height: 260px;
+
+    object-fit: cover;
+
+    display: block;
+
+    border-radius: 5px;
+
+    z-index: 10;
+
+    box-shadow:
+
+        0 0 12px
+        rgba(255,215,80,0.90),
+
+        0 0 30px
+        rgba(255,215,80,0.45),
+
+        0 0 55px
+        rgba(255,215,80,0.20);
+}
+
+
+/* =========================================================
+   MAIN TITLE
+   ================================================
+
+   IMPORTANT:
+   WHITE-SPACE: NOWRAP
+   keeps the entire Tamil title on ONE LINE.
+
+   FONT SIZE uses clamp() so it automatically
+   becomes smaller on smaller devices.
+========================================================= */
+
+.main-title {
+
+    position: absolute;
+
+    left: 50%;
+
+    top: 50%;
+
+    transform:
+        translateX(-50%);
+
+    width: 100%;
+
+    max-width: 100vw;
+
+    padding:
+        0
+        5px;
+
+    margin: 0;
+
+    color: #ffc800;
+
+    font-weight: 800;
+
+    text-align: center;
+
+    /* NEVER WRAP */
+
+    white-space: nowrap;
+
+    /* Responsive font */
+
+    font-size:
+        clamp(
+            11px,
+            5vw,
+            22px
+        );
+
+    line-height: 1.3;
+
+    letter-spacing: -0.5px;
+
+    /* text-shadow:
+
+        0 0 5px
+        rgba(255, 200, 0, 0.95),
+
+        0 0 12px
+        rgba(255,216,77,0.70),
+
+        0 0 20px
+        rgba(0, 0, 0, 0.35); */
+
+    z-index: 20;
+}
+
+
+/* =========================================================
+   TAP MESSAGE
+========================================================= */
+
+.tap-message {
+
+    position: absolute;
+
+    left: 50%;
+
+    bottom:
+        max(
+            35px,
+            calc(
+                35px +
+                env(safe-area-inset-bottom)
+            )
+        );
+
+    transform:
+        translateX(-50%);
+
+    width: 100%;
+
+    padding: 8px 10px;
+
+    border: none;
+
+    background: transparent;
+
+    color: #fff;
+
+    font-size:
+        clamp(
+            16px,
+            4.5vw,
+            22px
+        );
+
+    line-height: 1.5;
+
+    text-align: center;
+
+    cursor: pointer;
+
+    z-index: 20;
+}
+
+
+/* =========================================================
+   TAP HAND
+========================================================= */
+
+.tap-hand {
+
+    display: block;
+
+    font-size:
+        clamp(
+            34px,
+            9vw,
+            46px
+        );
+
+    margin-bottom: 10px;
+
+    animation:
+        tapHandMove
+        1.5s
+        ease-in-out
+        infinite;
+}
+
+
+@keyframes tapHandMove {
+
+    0%,
+    100% {
+
+        transform:
+            translateY(0);
+
+    }
+
+    50% {
+
+        transform:
+            translateY(12px);
+
+    }
+}
+
+
+/* =========================================================
+   TODAY'S WORD
+========================================================= */
+
+.tap-text strong {
+
+    color: #ffd84d;
+
+    font-weight: 800;
+
+    text-shadow:
+
+        0 0 8px
+        rgba(255,216,77,0.60);
+}
+
+
+/* =========================================================
+   VERSE PAGE
+========================================================= */
+
+.verse-wrapper {
+
+    position: absolute;
+
+    left: 50%;
+
+    top: 46%;
+
+    transform:
+        translate(
+            -50%,
+            -50%
+        );
+
+    width:
+        min(
+            92%,
+            500px
+        );
+
+    max-height: 82vh;
+
+    overflow-y: auto;
+
+    padding:
+        10px
+        0
+        70px;
+
+    z-index: 20;
+
+    scrollbar-width: none;
+}
+
+
+.verse-wrapper::-webkit-scrollbar {
+    display: none;
+}
+
+
+/* =========================================================
+   VERSE CARD
+========================================================= */
+
+.verse-card {
+
+    width: 100%;
+
+    margin:
+        0
+        auto
+        14px;
+
+    padding:
+        18px
+        15px;
+
+    border:
+        1px solid
+        rgba(255,216,77,0.75);
+
+    border-radius: 22px;
+
+    background:
+        rgba(
+            15,
+            15,
+            15,
+            0.68
+        );
+
+    box-shadow:
+
+        0 0 10px
+        rgba(255,216,77,0.08),
+
+        inset
+        0 0 20px
+        rgba(255,255,255,0.015);
+
+    backdrop-filter:
+        blur(3px);
+
+    -webkit-backdrop-filter:
+        blur(3px);
+
+    text-align: center;
+}
+
+
+/* =========================================================
+   VERSE TITLE
+========================================================= */
+
+.verse-title {
+
+    color: #ffd84d;
+
+    font-size:
+        clamp(
+            17px,
+            5vw,
+            21px
+        );
+
+    font-weight: 800;
+
+    line-height: 1.4;
+
+    margin-bottom: 8px;
+
+    white-space: nowrap;
+
+    text-shadow:
+        0 0 6px
+        rgba(255,216,77,0.4);
+}
+
+
+/* =========================================================
+   REFERENCE
+========================================================= */
+
+.verse-reference {
+
+    color: #ffd84d;
+
+    font-size:
+        clamp(
+            18px,
+            5vw,
+            22px
+        );
+
+    font-weight: 800;
+
+    line-height: 1.4;
+
+    margin-bottom: 8px;
+}
+
+
+/* =========================================================
+   TAMIL VERSE
+========================================================= */
+
+.tamil-text {
+
+    color: #fff;
+
+    font-size:
+        clamp(
+            17px,
+            5vw,
+            20px
+        );
+
+    font-weight: 500;
+
+    line-height: 1.65;
+
+    text-align: center;
+}
+
+
+/* =========================================================
+   ENGLISH VERSE
+========================================================= */
+
+.english-text {
+
+    color: #fff;
+
+    font-family: Arial, sans-serif;
+
+    font-size:
+        clamp(
+            15px,
+            4.5vw,
+            18px
+        );
+
+    line-height: 1.55;
+
+    text-align: center;
+}
+
+
+/* =========================================================
+   AMEN BUTTON
+========================================================= */
+
+#amenBtn {
+
+    display: block;
+
+    width: 75%;
+
+    min-height: 55px;
+
+    margin:
+        18px
+        auto
+        0;
+
+    padding:
+        10px
+        20px;
+
+    border: none;
+
+    border-radius: 35px;
+
+    background: #ffd84d;
+
+    color: #111;
+
+    font-family:
+        "Noto Sans Tamil",
+        sans-serif;
+
+    font-size: 21px;
+
+    font-weight: 800;
+
+    cursor: pointer;
+
+    box-shadow:
+
+        0 0 12px
+        rgba(255,216,77,0.6),
+
+        0 0 25px
+        rgba(255,216,77,0.25);
+
+    transition:
+        transform 0.2s ease;
+}
+
+
+#amenBtn:active {
+
+    transform:
+        scale(0.96);
+}
+
+
+/* =========================================================
+   GOLDEN GLOW
+========================================================= */
+
+#golden-glow {
+
+    position: fixed;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    z-index: 90;
+
+    opacity: 0;
+
+    background:
+
+        radial-gradient(
+            circle at center,
+            rgba(255,215,80,0.20) 0%,
+            rgba(255,215,80,0.08) 28%,
+            transparent 65%
+        );
+}
+
+
+#golden-glow.active {
+
+    animation:
+        goldenGlow
+        0.9s
+        ease-out;
+}
+
+
+@keyframes goldenGlow {
+
+    0% {
+
+        opacity: 0;
+
+        transform:
+            scale(0.85);
+    }
+
+    30% {
+
+        opacity: 1;
+
+        transform:
+            scale(1);
+    }
+
+    100% {
+
+        opacity: 0;
+
+        transform:
+            scale(1.15);
+    }
+}
+
+
+/* =========================================================
+   FLOATING ICON CONTAINER
+========================================================= */
+
+#heart-container {
+
+    position: fixed;
+
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    pointer-events: none;
+
+    overflow: hidden;
+
+    z-index: 200;
+}
+
+
+/* =========================================================
+   FLOATING ICON
+   BOTTOM -> TOP
+========================================================= */
+
+.floating-heart {
+
+    position: absolute;
+
+    bottom: -50px;
+
+    left: 50%;
+
+    line-height: 1;
+
+    opacity: 0.5;
+
+    animation:
+        floatBottomToTop
+        6s
+        linear
+        forwards;
+
+    filter:
+        drop-shadow(
+            0 0 5px
+            rgba(255,216,77,0.35)
+        );
+}
+
+
+@keyframes floatBottomToTop {
+
+    0% {
+
+        transform:
+            translateY(0)
+            rotate(0deg);
+
+        opacity: 0;
+    }
+
+    12% {
+
+        opacity: 0.5;
+    }
+
+    80% {
+
+        opacity: 0.5;
+    }
+
+    100% {
+
+        transform:
+            translateY(-115vh)
+            rotate(25deg);
+
+        opacity: 0;
+    }
+}
+
+
+/* =========================================================
+   SPARKLES
+========================================================= */
+
+#sparkle-container {
+
+    position: fixed;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    overflow: hidden;
+
+    z-index: 201;
+}
+
+
+.spark {
+
+    position: absolute;
+
+    border-radius: 50%;
+
+    background:
+        rgba(
+            255,
+            255,
+            255,
+            0.8
+        );
+
+    box-shadow:
+        0 0 10px
+        rgba(255,216,77,0.7);
+
+    animation:
+        sparkleMove
+        2.5s
+        ease-out
+        forwards;
+}
+
+
+@keyframes sparkleMove {
+
+    0% {
+
+        transform:
+            scale(0.2);
+
+        opacity: 0;
+    }
+
+    25% {
+
+        transform:
+            scale(1);
+
+        opacity: 0.4;
+    }
+
+    100% {
+
+        transform:
+            scale(0.1)
+            translateY(-80px);
+
+        opacity: 0;
+    }
+}
+
+
+/* =========================================================
+   AMEN CENTER FLASH
+========================================================= */
+
+#amen-flash-container {
+
+    position: fixed;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    overflow: hidden;
+
+    z-index: 202;
+}
+
+
+.amen-flash-icon {
+
+    position: absolute;
+
+    left: 50%;
+    top: 50%;
+
+    transform:
+        translate(-50%, -50%)
+        scale(0.2);
+
+    font-size: 25px;
+
+    line-height: 1;
+
+    opacity: 0;
+
+    animation:
+        amenCenterFlash
+        0.7s
+        ease-out
+        forwards;
+}
+
+
+@keyframes amenCenterFlash {
+
+    0% {
+
+        transform:
+            translate(-50%, -50%)
+            scale(0.2);
+
+        opacity: 0;
+    }
+
+    15% {
+
+        transform:
+            translate(-50%, -50%)
+            scale(0.9);
+
+        opacity: 0.5;
+    }
+
+    35% {
+
+        opacity: 0.5;
+    }
+
+    100% {
+
+        transform:
+            translate(
+                calc(-50% + var(--x)),
+                calc(-50% + var(--y))
+            )
+            scale(var(--scale));
+
+        opacity: 0;
+    }
+}
+
+
+/* =========================================================
+   FINAL BLESSING
+========================================================= */
+
+.final-blessing {
+
+    position: fixed;
+
+    left: 0;
+
+    bottom:
+        max(
+            12px,
+            env(safe-area-inset-bottom)
+        );
+
+    width: 100%;
+
+    padding: 0 8px;
+
+    text-align: center;
+
+    color: #ffd84d;
+
+    font-size:
+        clamp(
+            11px,
+            3.5vw,
+            15px
+        );
+
+    font-weight: 700;
+
+    line-height: 1.6;
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    pointer-events: none;
+
+    z-index: 150;
+
+    transition:
+        opacity 0.5s ease,
+        visibility 0.5s ease;
+}
+
+
+.final-blessing.show {
+
+    opacity: 1;
+
+    visibility: visible;
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 576px) {
+
+    .top-logo {
+
+        width: 68px;
+
+        height: 68px;
+
+        top: 15px;
+
+        right: 15px;
+    }
+
+
+    /* Bible moves higher */
+
+    .bible-image {
+
+        top: 12%;
+
+        width: 245px;
+
+        height: 225px;
+    }
+
+
+    /* ONE LINE TITLE */
+
+    .main-title {
+
+        top: 44%;
+
+        font-size:
+            clamp(
+                10px,
+                5vw,
+                15px
+            );
+
+        white-space: nowrap;
+
+        padding:
+            0
+            3px;
+
+        letter-spacing:
+            -0.6px;
+    }
+
+
+    .tap-message {
+
+        bottom: 30px;
+
+        font-size:
+            clamp(
+                15px,
+                4.5vw,
+                19px
+            );
+    }
+
+
+    .tap-hand {
+
+        font-size: 40px;
+    }
+
+
+    .verse-wrapper {
+
+        width: 93%;
+
+        top: 45%;
+
+        max-height: 80vh;
+    }
+
+
+    .verse-card {
+
+        padding:
+            17px
+            13px;
+
+        border-radius: 20px;
+    }
+
+
+    .verse-title {
+
+        font-size:
+            clamp(
+                15px,
+                4.8vw,
+                19px
+            );
+
+        white-space: nowrap;
+    }
+
+
+    .tamil-text {
+
+        font-size:
+            clamp(
+                16px,
+                5vw,
+                18px
+            );
+    }
+
+
+    .english-text {
+
+        font-size:
+            clamp(
+                14px,
+                4.5vw,
+                16px
+            );
+    }
+
+
+    #amenBtn {
+
+        width: 72%;
+
+        min-height: 52px;
+
+        font-size: 19px;
+    }
+}
+
+
+/* =========================================================
+   VERY SMALL PHONES
+   320px - 360px
+========================================================= */
+
+@media (max-width: 360px) {
+
+    .bible-image {
+
+        top: 16%;
+
+        width: 210px;
+
+        height: 190px;
+    }
+
+
+    .main-title {
+
+        top: 45%;
+
+        font-size:
+            clamp(
+                9px,
+                3.8vw,
+                17px
+            );
+
+        letter-spacing:
+            -0.8px;
+    }
+
+
+    .tap-message {
+
+        bottom: 25px;
+
+        font-size: 15px;
+    }
+
+
+    .tap-hand {
+
+        font-size: 35px;
+    }
+}
+
+
+/* =========================================================
+   SHORT PHONES
+========================================================= */
+
+@media (max-height: 700px) {
+
+    .bible-image {
+
+        top: 8%;
+
+        width: 220px;
+
+        height: 190px;
+    }
+
+
+    .main-title {
+
+        top: 38%;
+
+        font-size:
+            clamp(
+                9px,
+                4.7vw,
+                17px
+            );
+    }
+
+
+    .tap-message {
+
+        bottom: 18px;
+    }
+
+
+    .tap-hand {
+
+        font-size: 34px;
+
+        margin-bottom: 5px;
+    }
+}
+
+
+/* =========================================================
+   LANDSCAPE DEVICES
+========================================================= */
+
+@media (orientation: landscape) {
+
+    .bible-image {
+
+        top: 6%;
+
+        width: 180px;
+
+        height: 150px;
+    }
+
+
+    .main-title {
+
+        top: 32%;
+
+        font-size:
+            clamp(
+                10px,
+                3vw,
+                33px
+            );
+    }
+
+
+    .tap-message {
+
+        bottom: 10px;
+    }
+
+
+    .tap-hand {
+
+        font-size: 30px;
+    }
+
+
+    .verse-wrapper {
+
+        top: 50%;
+
+        max-height: 90vh;
+
+        width: 80%;
+    }
+}
+
+
+/* =========================================================
+   ACCESSIBILITY
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+
+        animation-duration:
+            0.01ms !important;
+
+        animation-iteration-count:
+            1 !important;
+
+        transition-duration:
+            0.01ms !important;
+    }
+}

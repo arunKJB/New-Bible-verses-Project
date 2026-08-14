@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="ta">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    >
+
+    <meta name="theme-color" content="#000000">
+
+    <title>இன்றைய நம்பிக்கை தரும் நல்வாக்கு</title>
+
+    <!-- Favicon -->
+<link
+    rel="icon"
+    type="image/png"
+    sizes="32x32"
+    href="assests/koinoniaKGlogo.jpg"
+>
+
+<link
+    rel="icon"
+    type="image/png"
+    sizes="192x192"
+    href="assests/koinoniaKGlogo.jpg"
+>
+
+<!-- Apple / Mobile -->
+<link
+    rel="apple-touch-icon"
+    href="assests/koinoniaKGlogo.jpg"
+>
+
+    <!-- Tamil Font -->
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    >
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Noto+Sans+Tamil:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- =========================================
+         BACKGROUND
+    ========================================== -->
+
+    <div class="background"></div>
+
+
+    <!-- =========================================
+         EFFECT CONTAINERS
+    ========================================== -->
+
+    <div id="heart-container"></div>
+
+    <div id="sparkle-container"></div>
+
+    <div id="amen-flash-container"></div>
+
+    <div id="golden-glow"></div>
+
+
+    <!-- =========================================
+         LOGO
+    ========================================== -->
+
+    <img
+        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTo9vJnAw9zUWALqdEMLAM23hUqinZK8O3flcWTyxQd6g&s=10"
+        alt="Krishnagiri Logo"
+        class="top-logo"
+    >
+
+
+    <!-- =========================================
+         FIRST SCREEN
+    ========================================== -->
+
+    <main id="start-screen" class="page page-one active">
+
+        <div class="background-image image-one"></div>
+
+        <div class="page-content">
+
+
+            <!-- =====================================
+                 SMALL BIBLE IMAGE
+                 NOW AT TOP CENTER
+            ====================================== -->
+
+            <img
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR_InEMtBXToOP3rECcKHbmrvK-y5vKsKv1dlu1qaot5ETY4TtDkpFhw6o&s=10"
+                alt="Holy Bible"
+                class="bible-image"
+            >
+
+
+            <!-- =====================================
+                 TITLE
+                 ALWAYS ONE LINE
+            ====================================== -->
+<br>
+<br>
+<br>
+<br>
+            <h1 class="main-title">
+               <b>📖இன்றைய நம்பிக்கை தரும் நல்வாக்கு📖</b>
+            </h1>
+
+
+            <!-- =====================================
+                 TAP AREA
+            ====================================== -->
+
+            <button
+                id="tap-message"
+                class="tap-message"
+                type="button"
+            >
+
+                <span class="tap-hand">
+                    👆
+                </span>
+
+                <span class="tap-text">
+                    Tap the Screen For
+                    <strong>Today's Word</strong>
+                </span>
+
+            </button>
+
+        </div>
+
+    </main>
+
+
+    <!-- =========================================
+         VERSE SCREEN
+    ========================================== -->
+
+    <main id="verse-screen" class="page page-two">
+
+        <div class="background-image image-two"></div>
+
+        <div class="page-content">
+
+            <div class="verse-wrapper">
+
+
+                <!-- TAMIL VERSE -->
+
+                <section class="verse-card tamil-card">
+
+                    <div class="verse-title">
+                        <!-- 📖இன்றைய நம்பிக்கை தரும் நல்வாக்கு📖 -->
+                    </div>
+
+                    <div
+                        class="verse-reference"
+                        id="tamilReference"
+                    ></div>
+
+                    <div
+                        class="verse-text tamil-text"
+                        id="tamilVerse"
+                    ></div>
+
+                </section>
+
+
+                <!-- ENGLISH VERSE -->
+
+                <section class="verse-card english-card">
+
+                    <div
+                        class="verse-reference"
+                        id="englishReference"
+                    ></div>
+
+                    <div
+                        class="verse-text english-text"
+                        id="englishVerse"
+                    ></div>
+
+
+                    <!-- AMEN -->
+
+                    <button
+                        id="amenBtn"
+                        type="button"
+                    >
+                        ❤️ ஆமென்
+                    </button>
+
+                </section>
+
+            </div>
+
+        </div>
+
+    </main>
+
+
+    <!-- =========================================
+         BLESSING
+    ========================================== -->
+
+    <div
+        id="blessing"
+        class="final-blessing"
+    >
+
+        <div>
+            ✝️ ஆண்டவர் உங்களை ஆசீர்வதிப்பாராக ✝️
+        </div>
+
+        <div>
+            ✝️ MAY GOD BLESS YOU ✝️
+        </div>
+
+    </div>
+
+
+    <!-- =========================================
+         JAVASCRIPT
+    ========================================== -->
+
+    <script src="verses.js"></script>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
