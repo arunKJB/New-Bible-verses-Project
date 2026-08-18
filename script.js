@@ -584,3 +584,99 @@ document.addEventListener("DOMContentLoaded", () => {
     );
 
 });
+
+function getUserId() {
+
+    let userId =
+        localStorage.getItem(
+            "daily_verses_user_id"
+        );
+
+    if (!userId) {
+
+        userId =
+            crypto.randomUUID();
+
+        localStorage.setItem(
+            "daily_verses_user_id",
+            userId
+        );
+    }
+
+    return userId;
+}
+
+async function recordAmen(
+    verseDate,
+    verseReference
+) {
+
+    const userId = getUserId();
+
+    const response =
+        await fetch("/api/amen", {
+
+            method: "POST",
+
+            headers: {
+                "Content-Type": "application/json"
+            },
+
+            body: JSON.stringify({
+
+                user_id: userId,
+
+                verse_date: verseDate,
+
+                verse_reference:
+                    verseReference
+
+            })
+
+        });
+
+    const result =
+        await response.json();
+
+    if (!response.ok) {
+
+        throw new Error(
+            result.message ||
+            "Amen failed"
+        );
+
+    }
+
+    return result;
+}
+
+const amenButton =
+    document.getElementById(
+        "amen-button"
+    );
+
+amenButton.addEventListener(
+    "click",
+    async () => {
+
+        try {
+
+            const result =
+                await recordAmen(
+                    "2026-08-18",
+                    "Proverbs 18:10"
+                );
+
+            console.log(
+                "Amen Count:",
+                result.amen_count
+            );
+
+        } catch (error) {
+
+            console.error(error);
+
+        }
+
+    }
+);
