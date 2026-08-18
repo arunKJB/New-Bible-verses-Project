@@ -1,82 +1,54 @@
-import { createClient } from "@supabase/supabase-js";
+async function recordAmen(
+    verseDate,
+    verseReference
+) {
 
-const supabase = createClient(
-    process.env.SUPABASE_URL,
-    process.env.SUPABASE_SERVICE_ROLE_KEY
-);
+    let userId =
+        localStorage.getItem("daily_verses_user_id");
 
-export default async function handler(req, res) {
+    if (!userId) {
 
-    if (req.method !== "POST") {
-        return res.status(405).json({
-            success: false,
-            message: "Method not allowed"
-        });
+        userId =
+            crypto.randomUUID();
+
+        localStorage.setItem(
+            "daily_verses_user_id",
+            userId
+        );
     }
 
-    try {
+    const response =
+        await fetch("/api/amen", {
 
-        const {
-            user_id,
-            verse_date,
-            verse_reference
-        } = req.body;
+            method: "POST",
 
-        if (
-            !user_id ||
-            !verse_date ||
-            !verse_reference
-        ) {
-            return res.status(400).json({
-                success: false,
-                message: "Missing required information"
-            });
-        }
+            headers: {
+                "Content-Type": "application/json"
+            },
 
-        const { error: eventError } = await supabase
-            .from("amen_events")
-            .insert({
-                user_id: user_id,
-                verse_date: verse_date,
-                verse_reference: verse_reference
-            });
+            body: JSON.stringify({
 
-        if (eventError) {
-            console.error(eventError);
+                user_id: userId,
 
-            return res.status(500).json({
-                success: false,
-                message: "Could not record Amen event"
-            });
-        }
+                verse_date: verseDate,
 
-        const { data, error: countError } = await supabase
-            .rpc("increment_amen_count", {
-                p_date: verse_date,
-                p_reference: verse_reference
-            });
+                verse_reference: verseReference
 
-        if (countError) {
-            console.error(countError);
+            })
 
-            return res.status(500).json({
-                success: false,
-                message: "Could not update Amen count"
-            });
-        }
-
-        return res.status(200).json({
-            success: true,
-            amen_count: data
         });
 
-    } catch (error) {
+    const result =
+        await response.json();
 
-        console.error(error);
+    if (!response.ok) {
 
-        return res.status(500).json({
-            success: false,
-            message: "Server error"
-        });
+        throw new Error(
+            result.message ||
+            "Amen failed"
+        );
+
     }
+
+    return result;
 }
